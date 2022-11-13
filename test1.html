@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bai 1</title>
+  </head>
+  <body>
+    <div class="container" style="margin: 20px">
+      <label for="first" style="font-family: poppins;">Số bắt đầu</label>
+      <input type="number" id="first" />
+      <label for="second" style="font-family: poppins;">Số cuối</label>
+      <input type="number" id="second" />
+      <br />
+      <button id="check" style="font-family: poppins;">Kiểm tra</button>
+      <div id="result"></div>
+    </div>
+    <script>
+      let firstNum = document.getElementById("first"),
+        secondNum = document.getElementById("second"),
+        btnCheck = document.getElementById("check"),
+        result = [],
+        sum = 0;
+      btnCheck.onclick = () => {
+        for (
+          let i = Number(first.value);
+          i <= Number(second.value);
+          i += 1
+        ) {
+          let check = 0;
+          for (let j = 2; j < i; j += 1) {
+            if (i % j === 0) {
+              check += 1;
+            }
+          }
+          if (check < 1) {
+            result.push(i);
+          }
+        }
+        for (let x = 0; x < result.length; x += 1) {
+          sum += result[x];
+        }
+        let resultDes =
+          "Các số nguyên tố có trong khoảng là:" +
+          result.join(", ") +
+          " \n " +
+          "Tổng các số nguyên tố là: " +
+          sum;
+        document.getElementById("result").innerHTML = resultDes;
+        result = [];
+        sum = 0;
+      };
+    </script>
+  </body>
+</html>
